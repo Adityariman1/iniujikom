@@ -1,32 +1,22 @@
-@extends('layouts.user')
-@section('css')
-     <style>
-         @media print {
-             #printPageButton {
-                 display: none;
-             }
-         }
+@extends('adminlte::page')
+@section('content_header')
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-12">
+                    <h1 class="m-0">Kategori</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
 
-     </style>
- @endsection
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <a href="{{ url('history') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Kembali</a>
+                <a href="{{ url('pesan2') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Kembali</a>
             </div>
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="border">
-                        <h3>Checkout selesai</h3>
-                        <h5>Pesanan anda sudah sukses dicheckout
-                        {{-- /**selanjutnya untuk pembayaran silahkan transfer di rekening<strong>Bank BRI Nomer Rekening : 32553-824629-591</strong>**/  --}}
-                        dengan nominal : <strong>Rp.
-                                {{ number_format($pesanan->jumlah_harga) }}</strong></h5>
-                        </div>
-                    </div>
-                </div>
                 <div class="card mt-2">
                     <div class="card-body">
                         <h3><i class="fa fa-shopping-cart"></i> Detail Pemesanan</h3>
@@ -89,4 +79,39 @@
 
         </div>
     </div>
+@endsection
+
+@section('css')
+    <link rel="stylesheet" href="{{ asset('DataTables/datatables.min.css') }}">
+@endsection
+
+@section('js')
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(".delete-confirm").click(function(event) {
+            var form = $(this).closest("form");
+            var name = $(this).data("name");
+            event.preventDefault();
+            Swal.fire({
+                title: "Apakah Kamu Yakin?",
+                text: "Anda tidak akan dapat mengembalikan ini!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }
+            });
+        });
+    </script>
+
+    <script src="{{ asset('Datatables/datatables.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        });
+    </script>
 @endsection

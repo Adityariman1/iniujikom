@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\BackendController;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LaporanpenjualanController;
 use App\Http\Controllers\PenjualanController;
+use App\Http\Controllers\PesananDetailController;
 use App\Http\Controllers\PesanController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,6 +37,7 @@ Route::delete('check-out/{id}', [PesanController::class, 'delete']);
 Route::get('konfirmasi-check-out', [PesanController::class, 'konfirmasi']);
 Route::get('history', [HistoryController::class, 'index']);
 Route::get('history/{id}', [HistoryController::class, 'detail']);
+Route::get('pesan2/{id}', [BackendController::class, 'detail']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('buku', BukuController::class);
 
@@ -52,5 +55,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
     Route::resource('buku', BukuController::class);
     Route::resource('penjualan', PenjualanController::class);
     Route::resource('laporanpenjualan', laporanPenjualanController::class);
-    Route::resource('pesan', PesanController::class);
+    Route::get('pesan2', [BackendController::class, 'index']);
+    Route::resource('pesanan_detail', PesananDetailController::class);
+
 });

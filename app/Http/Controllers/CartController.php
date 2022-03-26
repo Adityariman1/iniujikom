@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\pesan;
-use App\Models\pesanan_detail;
+use App\Models\cart;
 use Illuminate\Http\Request;
 
-class PesananDetailController extends Controller
+class CartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class PesananDetailController extends Controller
      */
     public function index()
     {
-        $pesanan_detail = pesanan_detail::with('pesan')->get();
-        return view('pesanan_detail.index', compact('pesanan_detail'));
+        //
     }
 
     /**
@@ -43,23 +41,21 @@ class PesananDetailController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\pesanan_detail  $pesanan_detail
+     * @param  \App\Models\cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(cart $cart)
     {
-        $pesanan_detail = pesanan_detail::findOrFail($id);
-        $pesan = pesan::all();
-        return view('pesanan_detail.show', compact('pesanan_detail', 'pesan'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\pesanan_detail  $pesanan_detail
+     * @param  \App\Models\cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function edit(pesanan_detail $pesanan_detail)
+    public function edit(cart $cart)
     {
         //
     }
@@ -68,10 +64,10 @@ class PesananDetailController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\pesanan_detail  $pesanan_detail
+     * @param  \App\Models\cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, pesanan_detail $pesanan_detail)
+    public function update(Request $request, cart $cart)
     {
         //
     }
@@ -79,10 +75,10 @@ class PesananDetailController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\pesanan_detail  $pesanan_detail
+     * @param  \App\Models\cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function destroy(pesanan_detail $pesanan_detail)
+    public function destroy(cart $cart)
     {
         //
     }

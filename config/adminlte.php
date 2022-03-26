@@ -253,7 +253,11 @@ return [
         ],
         [
             'text' => 'Pesan',
-            'url' => 'admin/pesan',
+            'url' => 'admin/pesan2',
+        ],
+        [
+            'text' => 'Pesanan',
+            'url' => 'admin/pesanan_detail',
         ],
 
     ],
